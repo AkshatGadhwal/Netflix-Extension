@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "IMDb Integration",
+  "version": "1.0",
+  "description": "Displays IMDb ratings and other information on popular OTT platforms.",
+  "host_permissions": [
+    "http://*/*", "https://*/*"
+  ],
+  "permissions": ["storage","activeTab","tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.netflix.com/*", "https://www.primevideo.com/*", "https://www.hotstar.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "IMDb Integration"
+  }
+}
